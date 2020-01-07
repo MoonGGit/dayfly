@@ -1,0 +1,1058 @@
+document.querySelector("#content").innerHTML=`
+  <div>
+    ${이렇게 사용}
+  </div>
+`;
+
+<body><div data-product-id="G123">Guitar</div>
+a = document.querySelector('div')
+console.log(a.dataset.productId)    //"G123" , IE 11 미만에서는 지원하지 않는다
+  -> document.querySelector('div').getAttribute('data-product-id') // 'G123'
+
+엘리먼트 삭제
+element.parentNode.removeChild(element);
+
+Element.classList
+		//.add('~')
+		//.remove('~')
+		//.toggle('~')
+Element.className
+	//.readOnly
+	//.rowSpan
+	//.colSpan
+	//.userMap
+	//.frameBorder
+	//.htmlFor
+	//.maxLength 
+Element.id
+Element.tagName
+
+Element.getElementsByClassName
+Element.getElementsByTagName
+Element.querySelector
+Element.querySelectorAll
+
+Element.getAttribute(name)
+Element.setAttribute(name, value)
+Element.hasAttribute(name);
+Element.removeAttribute(name);
+
+var li = document.createElement('li')
+var t = document.createTextNode('Str')
+li.appendChild(t)
+
+Node.childNodes
+Node.firstChild
+Node.lastChild
+Node.nextSibling	//다음 형제
+Node.previousSibling	// 전 형제
+Node.contains(본인포함 자식요소)       
+Node.hasChildNodes()
+
+Node.nodeType	
+	// Node.ELEMENT_NODE -> 1
+Node.nodeName
+
+Node.nodeValue
+Node.textContent
+
+Node.appendChild()
+	// insertBefore(요소, 대상)
+Node.removeChild()
+
+Node.replaceChild(요소, 대상)
+
+요소.outerHTML
+	// 자신(요소)을 포함한 HTML
+
+요소.insertAdjacentHTML('옵션',요소)
+		//Element
+		//Text
+옵션 : beforebegin, afterbegin, beforeend, afterend
+
+target.previousElementSibling.textContent;
+element.innerHTML   // HTML파싱으로 속도가 조금 느림
+element.innerText   // 숨김요소, script, style 노반환
+element.textContent // xss방지 가능, 숨김요소, script, style 반환
+
+textNode.nodeValue
+textNode.data
+
+textNode.appendData(data);
+textNode.deleteData(시작인덱스, 갯수);
+textNode.insertData(시작인덱스, data);
+textNode.replaceData(시작, 갯수, data);
+textNode.substringData(시작, 갯수);
+
+window.pageYOffset
+window.scrollTo(가로,세로);
+window.innerWidth
+window.innerHeight
+screen.width
+screen.height
+
+Node.getBoundingClientRect()
+Node.offsetParent
+Node.clientWidth
+node.clientHeight
+
+event.stopPropagation()
+event.preventDefault()
+event.altKey
+event.ctrlKey
+event.shiftKey
+event.type
+
+event.currentTarget // 이벤트를 단 타겟
+event.target	// 실제 타겟
+
+event.clientX
+event.clientY
+	// 마우스 좌표
+
+이벤트 contextmenu : 우클릭 시
+
+element.cloneNode(true)
+	// element를 내부까지(true) 복사
+
+event.code ->
+Space
+ArrowRight
+ArrowLeft
+ArrowDown
+ArrowUp
+
+**브라우저 객체 (BOM)
+window
+ document	// DOM객체
+ frames[]	// iframe 요소들 반환
+ history	//back(), forward(), length
+ location
+ navigator
+ screen
+
+-window 속성
+closed
+innerHeight
+innerWidth
+length
+name
+outerHeight
+outerWidth
+parent
+screenLeft
+screenTop
+screenX
+screenY
+top
+
+메서드
+alert
+blur	// 포커스 제거
+clearInterval
+clearTimeout
+close
+confirm
+focus
+moveBy		//현재기준으로
+moveTo(x,y)
+open("URL", "새 창 이름", "새 창 옵션")
+	옵션 ex) "width=350, height=350, location=no, scrollbars=no"
+prompt
+resizeBy	// 현재 기준으로
+resizeTo(x,y)
+setInterval
+clearInterval
+setTimeout
+clearTimeout
+stop
+
+-location객체의 속성, 메소드
+href
+hash	// #에 명시된 값
+host, hostname, protocol
+search	// 쿼리(요청값) 반환
+reload()
+
+-navigator
+속성
+cookieEnabled
+appName		// 브라우저 이름 ex) Netscape
+appCodeName	// 브라우저 코드명 ex)Mozilla
+product
+appVersion
+userAgent
+platform
+language
+online		// 온라인 상태여부
+메서드
+javaEnabled()
+
+-history객체의 속성, 메소드
+back()
+forward()
+go(숫자)	// ex) -2면 2단계 이전 사이트 이동
+length		// 방문기록 개수
+
+-screen의 속성
+width		// 화면 너비값
+height
+availWidth
+availHeight	// 작업 표시줄을 제외한 화면 높잇값
+colorDepth	// 모니터가 표현 가능한 컬러 bit
+
+**문서객체 (DOM)
+document
+ forms[]
+ anchors[]
+ layers[]
+ images[]
+
+document 메서드
+-element선택
+getElementById(...)
+getElementsByTagName(...)	// HTMLCollection(인덱스접근이지만 배열이 아님)로 반환
+getElementsByClassName(...)	// NodeList 반환
+querySelector()
+querySelectorAll()
+
+-element 요소변경
+innerHTML = ...;
+attribute = ...;
+setAttribute(attr, value);
+style.property = ...;
+
+-요소 추가, 삭제
+document.createElement("p")
+	createTextNode("...")	-> "..."
+	removeChild(...)
+	appendChild(...)	//마지막 삽입 
+	replaceChild(새것, 대상)
+	write(...)	
+element.appendChild();
+부모요소.insertBefore(넣을요소,기준요소(부모바로아래자식));
+
+ex)
+var list = document.getElementById("list");
+var x = list.removeChild(list.childNodes[0]);
+
+var item = document.getElementById("list");
+item.parentNode.removeChild(item);
+
+*HTML객체 찾기  263P
+document.body  ->  <body>
+document.cookie  ->  document의 쿠키 반환
+document.images  ->  모든 <img>
+document.lastModified  ->  갱신 날짜와 시간
+
+*클래스 추가 삭제
+element.classList.add( 'someclass' );
+element.classList.add( 'someclass1', 'someclass2' );
+element.classList.remove( 'someclass' );
+element.classList.remove( 'someclass1', 'someclass2' );
+element.classList.contains( 'someclass' );
+element.classList.contains( 'someclass1', 'someclass2' );
+element.classList.toggle( 'someclass' );
+
+*이벤트
+onload, onunload -> 페이지를 열거나 닫을 때 발생
+onchange -> 요소의 값이 바뀌면 발생	// 입력폼에서는 요소.value로 가져옴
+element.addEventListener('keyup',function(){..});	`//하나씩밖에 등록안됨
+object.removeEventListener("event", func);	// 해당이벤트에 동일 함수를 줘야함 
+
+*DOM 노드(요소) 탐색
+element.firstChild.nodeValue; 		// 태그로 노드를 나눔
+element.childNodes[0].nodeValue;	// 태그로 노드를 나눔
+	ex) .1..< .. /> .2..  ->  [".1..", "<.. />", ".2.."] 
+
+document.body 	// 문서 본문
+document.documentElement	// 문서 전체
+
+@@form객체
+document.forms -> form컬렉션
+formObject.elements
+
+document.form이름.input이름.value
+document.form이름.reset()
+document.form이름.submit()
+
+document.myForm.action="URL경로";
+document.myForm.method="post";
+document.myForm.submit();
+	//버튼으로 post&파라미터 보내자 -> input type="hidden" 또는 버튼태그에 value로 넘김
+
+location.reload();
+window.location.href="사이트URL"	// 뒤로가기 가능
+location.replace('사이트URL');		// 뒤로가기 불가(덮어씌움)
+
+*HTML5 제약 조건검증
+input태그 속성에 max, min, maxlength 등 ..
+->  태그요소.checkValidity()	-> true or false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+★fun.call(thisArg[, arg1[, arg2[, ...]]])
+	//   this 객체가 기존 함수를 호출할 때 할당될 수 있습니다
+- 객체의 생성자 연결에 call 사용
+function Product(name, price) {
+  this.name = name;
+  this.price = price;
+
+  if (price < 0) {
+    throw RangeError('Cannot create product ' +
+                      this.name + ' with a negative price');
+  }
+}
+
+function Food(name, price) {
+  Product.call(this, name, price);
+  this.category = 'food';
+}
+
+
+- 익명 함수 호출에 call 사용
+var animals = [
+  { species: 'Lion', name: 'King' },
+  { species: 'Whale', name: 'Fail' }
+];
+
+for (var i = 0; i < animals.length; i++) {
+  (function(i) {
+    this.print = function() {
+      console.log('#' + i + ' ' + this.species
+                  + ': ' + this.name);
+    }
+    this.print();
+  }).call(animals[i], i);
+}
+
+
+-함수 호출 및 'this'를 위한 문맥 지정에 call 사용
+function greet() {
+  var reply = [this.animal, 'typically sleep between', this.sleepDuration].join(' ');
+  console.log(reply);
+}
+
+var obj = {
+  animal: 'cats', sleepDuration: '12 and 16 hours'
+};
+
+greet.call(obj);  // cats typically sleep between 12 and 16 hours
+
+- 인수 지정 없이 함수 호출에 call
+
+var sData = 'Wisen';            
+function display(){
+  console.log('sData value is %s ', this.sData);
+	//첫번째 인자를 전달하지 않으면, this의 값은 전역 객체에 바인딩됩니다
+}
+
+display.call();  // sData value is Wisen
+
+★Object.defineProperty(obj, prop, descriptor)
+	//객체에 직접 새로운 속성을 정의하거나 이미 존재하는 속성을 수정한 후 그 객체를 반환합니다.
+ex)
+const object1 = {};
+Object.defineProperty(object1, 'property1', {
+
+  value: 42,
+
+  writable: false
+});object1.property1 = 77;
+// throws an error in strict mode
+
+
+console.log(object1.property1);
+// expected output: 42
+
+
+// __proto__ 사용
+var obj = {};
+var descriptor = Object.create(null); // 상속받은 속성 없음
+// 기본으로 열거 불가, 설정 불가, 변경 불가
+descriptor.value = 'static';
+Object.defineProperty(obj, 'key', descriptor);
+
+// 명시적
+Object.defineProperty(obj, 'key', {
+  enumerable: false,		// for...in 루프나 Object.keys() 에서 노출될지 말지
+  configurable: false,
+  writable: false,
+  value: 'static'
+});	// delete o.p; -> false
+
+// 같은 객체를 재활용하기
+function withValue(value) {
+  var d = withValue.d || (
+    withValue.d = {
+      enumerable: false,
+      writable: false,
+      configurable: false,
+      value: null
+    }
+  );
+  d.value = value;
+  return d;
+}
+Object.defineProperty(obj, 'key', withValue('static'));
+
+// Object.freeze가 존재하면
+// 속성의 추가/제거 방지
+// (value, get, set, enumerable, writable, configurable)  
+(Object.freeze || Object)(Object.prototype);
+
+
+var o = {}; // 새로운 객체를 생성한다.
+
+// 데이터 속성기술로 defineProperty를 이용해 속성을 추가한다
+Object.defineProperty(o, 'a', {
+  value: 37,
+  writable: true,
+  enumerable: true,
+  configurable: true
+});
+// 'a'속성이 o 객체에 존재하고 값은 37이다
+
+// 데이터 접근기술로 defineProperty를 이용해 속성을 추가한다
+var bValue = 38;
+Object.defineProperty(o, 'b', {
+  get: function() { return bValue; },
+  set: function(newValue) { bValue = newValue; },
+  enumerable: true,
+  configurable: true
+});
+o.b; // 38
+
+★Object.create(proto[, propertiesObject])	// 두번째 매개로 defineProperty형식같은 
+			//// 기본으로 writable, enumerable 또는 configurable 속성은 false:
+var o;
+
+// 프로토타입이 null인 객체 생성
+o = Object.create(null);
+
+
+o = {};
+// 위는 아래와 같습니다:
+o = Object.create(Object.prototype);
+
+-----
+// Shape - 상위클래스
+function Shape() {
+  this.x = 0;
+  this.y = 0;
+}
+
+// 상위클래스 메서드
+Shape.prototype.move = function(x, y) {
+  this.x += x;
+  this.y += y;
+  console.info('Shape moved.');
+};
+
+// Rectangle - 하위클래스
+function Rectangle() {
+  Shape.call(this); // super 생성자 호출.
+}
+
+// 하위클래스는 상위클래스를 확장
+Rectangle.prototype = Object.create(Shape.prototype);	// Shape.prototype에 정의된 함수 사용위함(move)
+Rectangle.prototype.constructor = Rectangle;
+
+var rect = new Rectangle();
+
+console.log('Is rect an instance of Rectangle?', rect instanceof Rectangle); // true
+console.log('Is rect an instance of Shape?', rect instanceof Shape); // true
+rect.move(1, 1); // Outputs, 'Shape moved.'
+
+-여러 객체에서 상속하고 싶은 경우엔 mixin
+
+function MyClass() {
+  SuperClass.call(this);
+  OtherSuperClass.call(this);
+}
+
+MyClass.prototype = Object.create(SuperClass.prototype); // 상속
+mixin(MyClass.prototype, OtherSuperClass.prototype); // mixin
+	// mixin 같은 함수의 예는 jQuery.extend()
+MyClass.prototype.myMethod = function() {
+  // 기능 수행
+};
+
+
+★strict 모드 - 에러가 나지 않고 미연에 방지하고자 코드를 섬세하게 체크
+<-> "느슨한 모드(sloppy mode)"
+
+1. 기존에는 조용히 무시되던 에러들을 throwing합니다.
+2. JavaScript 엔진의 최적화 작업을 어렵게 만드는 실수들을 바로잡습니다. 가끔씩 엄격 모드의 코드는 비-엄격 모드의 동일한 코드보다 더 빨리 작동하도록 만들어집니다.
+3. 엄격 모드는 ECMAScript의 차기 버전들에서 정의 될 문법을 금지합니다.
+{} 괄호로 묶여진 블럭문에는 적용되지 않습니다
+ex)
+"use strict"; or 'use strict';
+
+function strict() {
+    // 모듈이기때문에 기본적으로 엄격합니다
+}
+export default strict;
+
+
+
+
+
+★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ES6
+ES6 === ES2015
+
+var a = 0o10; // ES6: 8진수
+
+*block scope
+-> 반응형으로 콜백함수로 변수를 참조하도록 할 시 참조 할 당시의 환경(변수)을 저장해야함
+var i;
+for (i = 0; i < 10; i++) {
+  (function(j) {		// 클로저
+    setTimeout(function() {
+      console.log(j);
+    }, 100);
+  })(i);
+}
+//메모리를 위해 참조를 없애서 메모리를 release시켜야함
+
+또는 
+var 키워드 대신 let 키워드로 바꿔줌
+var li = document.querySelectorAll("li");
+for(let i=0; i<li.length; i++){
+  li[i].addEventListener("click",function(){
+    console.log(i+"번째 클릭");
+  })
+}
+
+★Object.assign
+(IE지원 X)
+Object.assign(target, ...sources)
+Object.assign은 타킷 객체로 소스 객체의 프로퍼티를 복사한다. 
+이때 소스 객체의 프로퍼티와 동일한 프로퍼티를 가진 타켓 객체의 프로퍼티들은 소스 객체의 프로퍼티로 덮어쓰기된다.
+리턴값으로 타킷 객체를 반환한다
+
+// Copy
+const obj = { a: 1 };
+const copy = Object.assign({}, obj);
+console.log(copy); // { a: 1 }
+// Merge
+const o1 = { a: 1 };
+const o2 = { b: 2 };
+const o3 = { c: 3 };
+const merge1 = Object.assign(o1, o2, o3);
+console.log(merge1); // { a: 1, b: 2, c: 3 }
+console.log(o1);     // { a: 1, b: 2, c: 3 }, 타겟 객체가 변경된다
+// Merge
+const o4 = { a: 1 };
+const o5 = { b: 2 };
+const o6 = { c: 3 };
+const merge2 = Object.assign({}, o4, o5, o6);
+console.log(merge2); // { a: 1, b: 2, c: 3 }
+
+★constructor()
+
+
+★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ES6+
+*생략부호( 나머지, 펼침, 해체할당 연산자 )
+-나머지
+function request(url, options, callback){	//매개 초과 시
+	var args = Array.prototype.slice.call(arguments, request.length)
+	var url = args[0]
+	var callback = args[2]
+	//..
+}
+
+-->
+function (url, options, ...callbacks){
+	var callback1 = callbacks[0]
+	var callback2 = callbacks[1]
+	//..
+}
+
+-해체할당
+function(url, options, ...[error, success]){
+	if(!url) return error(new Error('oppps'))
+	//...
+	success(data)
+}
+
+-펼침
+arr1.push(...arr2)
+array2 = [...array1, x, y, z]
+var d = new Date(...dates)
+
+////// ES5에서는 배열을 함수의 인자로 사용 -> apply() 함수를 사용
+ex)
+function request(url, options, callback) { ...}
+var requestArgs = ['http ..', {...}, function(){...}]
+request.apply(null, requestArgs)
+
+==>
+request.(...requestArgs)
+
+★apply
+
+func.apply(thisArg, [argsArray])
+
+// thisArg: 함수 내부의 this에 바인딩할 객체
+// argsArray: 함수에 전달할 argument의 배열
+
+대표적인 용도는 arguments 객체와 같은 유사 배열 객체에 배열 메소드를 사용하는 경우
+ var arr = Array.prototype.slice.apply(arguments); // arguments.slice
+  // var arr = [].slice.apply(arguments);
+
+★call
+call() 메소드의 경우, apply()와 기능은 같지만 apply()의 두번째 인자에서 배열 형태로 넘긴 것을 각각 하나의 인자로 넘긴다.
+Person.apply(foo, [1, 2, 3]);
+
+Person.call(foo, 1, 2, 3);
+
+
+
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.doSomething = function (callback) {
+  if (typeof callback == 'function') {
+    callback.call(this);
+  }
+};
+
+function foo() {
+  console.log(this.name);	// 기본적으로 this는 window를 가르킴
+}
+
+var p = new Person('Lee');
+p.doSomething(foo);  // 'Lee'
+
+
+
+★bind
+
+ES5에 추가된 Function.prototype.bind
+함수를 실행하지 않기 때문에 명시적으로 함수를 호출할 필요가 있다.
+
+
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.doSomething = function (callback) {
+  if (typeof callback == 'function') {
+    // callback.call(this);
+    // this가 바인딩된 새로운 함수를 호출
+    callback.bind(this)();		// this가 바인딩된 새로운 함수를 리턴 -> 명시적 함수호출
+  }
+};
+
+function foo() {
+  console.log('#', this.name);
+}
+
+var p = new Person('Lee');
+p.doSomething(foo);  // 'Lee'
+
+★
+생성자함수는 대문자로
+arguments.callee는 호출된 함수의 이름
+
+
+★
+실행 컨텍스트는 실행 가능한 코드가 실행되기 위해 필요한 환경
+
+전역 코드 : 전역 영역에 존재하는 코드
+Eval 코드 : eval 함수로 실행되는 코드
+함수 코드 : 함수 내에 존재하는 코드
+
+
+
+
+★클로저
+ var box = document.querySelector('.box');
+    var toggleBtn = document.querySelector('.toggle');
+
+    var toggle = (function () {
+      var isShow = false;
+
+      // ① 클로저를 반환
+      return function () {
+        box.style.display = isShow ? 'block' : 'none';
+        // ③ 상태 변경
+        isShow = !isShow;
+      };
+    })();
+
+    // ② 이벤트 프로퍼티에 클로저를 할당
+    toggleBtn.onclick = toggle;
+
+
+
+
+var l = document.querySelectorAll("li")
+
+l.forEach((e,i)=>{
+  e.addEventListener('click',function(){
+    console.log(i)
+  })
+})
+
+★
+array.fill(value, start, end)
+
+
+
+★프로토타입
+Function.prototype.method = function (name, func) {
+  // 생성자함수의 프로토타입에 동일한 이름의 메소드가 없으면 생성자함수의 프로토타입에 메소드를 추가
+  // this: 생성자함수
+  if (!this.prototype[name]) {
+    this.prototype[name] = func;
+  }
+};
+
+function Person(name) {
+  this.name = name;
+}
+
+Person.method('setName', function (name) {
+  this.name = name;
+});
+
+Person.method('getName', function () {
+  return this.name;
+});
+
+------------------
+*의사 클래스 패턴 상속
+var Parent = (function () {
+  // Constructor
+  function Parent(name) {
+    this.name = name;
+  }
+
+  // method
+  Parent.prototype.sayHi = function () {
+    console.log('Hi! ' + this.name);
+  };
+
+  // return constructor
+  return Parent;
+}());
+
+// 자식 생성자 함수
+var Child = (function () {
+  // Constructor
+  function Child(name) {
+    this.name = name;
+  }
+
+  // 자식 생성자 함수의 프로토타입 객체를 부모 생성자 함수의 인스턴스로 교체.
+  Child.prototype = new Parent(); // ②
+
+  // 메소드 오버라이드
+  Child.prototype.sayHi = function () {
+    console.log('안녕하세요! ' + this.name);
+  };
+
+  // sayBye 메소드는 Parent 생성자함수의 인스턴스에 위치된다
+  Child.prototype.sayBye = function () {
+    console.log('안녕히가세요! ' + this.name);
+  };
+
+  // return constructor
+  return Child;
+}());
+
+var child = new Child('child'); // ①
+
+
+*프로토타입 패턴 상속
+// 부모 생성자 함수
+var Parent = (function () {
+  // Constructor
+  function Parent(name) {
+    this.name = name;
+  }
+
+  // method
+  Parent.prototype.sayHi = function () {
+    console.log('Hi! ' + this.name);
+  };
+
+  // return constructor
+  return Parent;
+}());
+
+// create 함수의 인수는 프로토타입이다.
+var child = Object.create(Parent.prototype);
+child.name = 'child';
+
+child.sayHi();  // Hi! child
+
+console.log(child instanceof Parent); // true
+
+
+
+
+★프로토타입 패턴 상속, 모듈화
+var Person = function() {
+  var name;
+
+  var F = function(arg) { name = arg ? arg : ''; };
+
+  F.prototype = {
+    getName: function() {
+      return name;
+    },
+    setName: function(arg) {
+      name = arg;
+    }
+  };
+
+  return F;
+}();
+
+var me = new Person('Lee');
+
+★ 네이티브 객체 = ECMAScript 명세에 정의된 객체
+	//Object, String, Number, Function, Array, RegExp, Date, Math
+
+// 객체리터럴을 사용하는 것이 바람직하다.
+var o = {};
+
+★에러(error) 객체
+try {
+  // foo();
+  throw new Error('Whoops!');
+} catch (e) {
+  console.log(e.name + ': ' + e.message);
+}
+
+Error 이외에 Error에 관련한 객체는 아래와 같다.
+EvalError
+InternalError
+RangeError
+ReferenceError
+SyntaxError
+TypeError
+URIError
+
+
+★심볼(Symbol) 타입
+ECMAScript 6(Javascript 2015) 에서 추가된 유일하고 변경 불가능한(immutable) 원시 타입으로 Symbol 객체는 원시 타입 Symbol 값을 생성한다.
+
+
+★호스트 객체
+window, XmlHttpRequest, HTMLElement 등의 DOM 노드 객체와 같이 호스트 환경에 정의된 객체를 말한다. 
+
+
+
+----------------------------------------------------------------------------------------------------------------
+★★★★★★★★★js
+int x = 5;
+printf("x = %d\n", x);
+
+★
+프로퍼티 키 first-name에는 반드시 따옴표를 사용해야 하지만 first_name에는 생략 가능
+ex)  'first-name' , first_name
+
+★
+for-in 문은 객체의 문자열 키(key)를 순회하기 위한 문법. 배열에는 사용하지 않는 것이 좋다. 이유는 아래와 같다.
+1.객체의 경우, 프로퍼티의 순서가 보장되지 않는다. 그 이유는 원래 객체의 프로퍼티에는 순서가 없기 때문
+2.배열 요소들만을 순회하지 않는다.
+-> es6  for-of 
+
+★immutable value vs. mutable value
+Boolean
+null
+undefined
+Number
+String
+Symbol
+원시 타입 이외의 모든 값은 객체(Object) 타입이며 객체 타입은 변경 가능한 값(mutable value)이다
+
+var user = {
+  name: 'Lee',
+  address: {
+    city: 'Seoul'
+  }
+};
+
+var myName = user.name; // 변수 myName은 string 타입이다, user.name이 원시타입, user이 객체타입
+
+★불변 데이터 패턴
+객체의 방어적 복사(defensive copy)
+Object.assign(target, ...sources)
+ex)
+// Copy
+const obj = { a: 1 };
+const copy = Object.assign({}, obj);
+console.log(copy); // { a: 1 }
+console.log(obj == copy); // false
+
+// Merge
+const o1 = { a: 1 };
+const o2 = { b: 2 };
+const o3 = { c: 3 };
+
+const merge1 = Object.assign(o1, o2, o3);
+
+console.log(merge1); // { a: 1, b: 2, c: 3 }
+console.log(o1);     // { a: 1, b: 2, c: 3 }, 타겟 객체가 변경된다!
+
+// Merge
+const o4 = { a: 1 };
+const o5 = { b: 2 };
+const o6 = { c: 3 };
+
+const merge2 = Object.assign({}, o4, o5, o6);
+
+console.log(merge2); // { a: 1, b: 2, c: 3 }
+console.log(o4);     // { a: 1 }
+ES6에서 추가된 메소드이며 Internet Explorer는 지원하지 않는다.
+
+★caller 프로퍼티
+caller 프로퍼티는 자신을 호출한 함수를 의미한다.
+function bar() {
+  return 'caller : ' + bar.caller;
+}
+
+
+★타입을 반환
+function getType(target) {
+  return Object.prototype.toString.call(target).slice(8, -1);
+}
+★★★★★★★★★es5
+★strict mode
+전역에 적용한 strict mode는 스크립트 단위로 적용된다
+ <script>
+    'use strict';
+  </script>
+  <script>
+    x = 1; // 에러가 발생하지 않는다.
+    console.log(x); // 1
+  </script>
+
+*strict mode가 발생시키는 에러
+암묵적 전역 변수
+변수, 함수, 매개변수의 삭제
+매개변수 이름의 중복
+with 문의 사용
+일반 함수의 this // 일반 함수를 호출하면 this에 undefined가 바인딩
+
+★★★★★★★★★es6
+
+★
+var student = {
+  name: 'Lee',
+  score: 90
+}
+
+// Object.prototype.hasOwnProperty()
+console.log(student.hasOwnProperty('name')); // true
+
+
+@@비동기 
+
+async function logTodoTitle() {
+  try {
+    var user = await fetchUser();  // fetchUser, fetchTodo는 통신함수  
+    if (user.id === 1) {
+      var todo = await fetchTodo();
+      console.log(todo.title); // delectus aut autem
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+★ 비동기 처리 메서드가 꼭 프로미스 객체를 반환해야 await가 의도한 대로 동작
+프로미스는 “자바스크립트 비동기 처리를 위한 객체“
+async - await 사용 않할 시, 콜백함수 또는 .then()을 사용해야 함
+.then()에서 리턴 시 해당 값을 다시 promise에 담아서 리턴
+
+getData(function (tableData) {
+  console.log(tableData); // 함수 생성 전달
+});
+
+
+new Promise();  // Pending(대기)
+new Promise(function (resolve, reject) {    // Fulfilled(이행) --> then()사용 가능
+  resolve();
+});
+new Promise(function (resolve, reject) {    // Fulfilled(이행) --> then()사용 가능
+  reject();   // Reject 실패
+});
+
+// reject()의 결과 값 Error를 err에 받음
+function getData() {
+  return new Promise(function (resolve, reject) {
+    reject(new Error("Request is failed"));
+  });
+}
+
+getData().then().catch(function (err) {
+  console.log(err); // Error: Request is failed
+});
+// then의 두번 째 콜백은 reject만 잡아냄, error는 catch로 잡아야함
+
+
+객체를 배열화(ES5)
+객체안에 length와 인덱스를 키로 가지고 있어야 함
+var obj = {
+  0:"first",
+  1:"second",
+  length:2
+}
+console.log([].slice.call(obj));    //  length만큼 키값(인덱스, 없는놈도) 대응 밸류로 배열을 만들어 반환
+[].forEach.bind(obj)(function(val){ 
+  console.log(val);
+});     // length만큼 키값(인덱스)이 존재하는 밸류만 
+
+const value = false || "앞이 false면 이것이 주입됨";
+
+스프레드 연산자
+const o1 = { x: 1, y: 2 };
+const o2 = { ...o1, z: 3 };
+console.log(o2);    // 객체 o1는 변화 없음
+
+for (let [key, value] of Object.entries(object1)) {
+  console.log(`${key}: ${value}`);
+}
+
+
+★★★★★★★★★React
+
+화살표 함수, createClass() -> this 자동 바인딩
+
+

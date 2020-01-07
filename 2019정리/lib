@@ -1,0 +1,105 @@
+@@axios
+구형브라우저를 지원합니다.(Fetch API의 경우는 폴리필이 필요합니다.)
+요청을 중단시킬 수 있습니다.
+응답 시간 초과를 설정하는 방법이 있습니다.
+CSRF 보호 기능이 내장되어있다.    //  Cross-site request forgery, 사이트 간 요청 위조
+JSON 데이터 자동변환
+Node.js에서의 사용
+
+axios({
+  url: 'https://test/api/cafe/list/today',
+  method: 'get',
+  data: {
+    foo: 'diary'
+  }
+});
+
+axios.get()
+axios.post()
+axios.delete()
+axios.put()
+axios.patch()
+axios.options()
+
+async/await 구문을 사용하지 않으면 promise구문 사용 가능
+
+axios.get(url).then(res => {...}).catch(err=>{...});
+
+axios.get(url, {
+  params: {
+    foo: 'bar'
+  }
+});
+
+
+@@ redux-thunk // handle asynchronous actions in Redux.
+액션함수 예제)
+function incrementAsync(){
+  return (dispatch, getState) => {    // dispatch를 파라미터를 가지는 함수를 리턴
+    const {값} = getState();      // 
+    if(값){
+      setTimeout(()=>{
+        dispatch(다른 함수());
+      }, 1000);
+    }
+  }
+}         
+// 위 같이 redux-thunk 미들웨어에서, 전달받은 액션이 함수 형태 일 때, 그 함수에 dispatch 와 getState 를 넣어서 실행해줍니다
+// dispatch시 액션의 함수실행 결과( {type:~, 상태값들..} ) 대신! 함수!를 넘길 때
+
+function createThunkMiddleware(extraArgument) {
+  return ({ dispatch, getState }) => next => action => {
+    if (typeof action === 'function') {
+      return action(dispatch, getState, extraArgument);
+    }
+
+    return next(action);
+  };
+}
+
+const thunk = createThunkMiddleware();
+thunk.withExtraArgument = createThunkMiddleware;
+
+export default thunk;
+
+@@react-router
+BrowserRouter
+Switch
+Route // exact, path (/:변수명)-> useParams에서 변수명으로 꺼냄, render={({ location })=>{...}}, path="*" -> 나머지 경로 처리
+Link  // to <Link
+          key={i.id}
+          to={{
+            pathname: `/img/${i.id}`,
+            // This is the trick! This link sets
+            // the `background` in location state.
+            state: { background: location }
+          }}
+        >
+Prompt        // <
+ <Prompt
+        when={isBlocking}
+        message={location =>
+          `Are you sure you want to go to ${location.pathname}`
+        }
+      />
+Redirect      // <Redirect to={{ pathname: "/login", state: { from: location }}}/>, useLocation()의 인스턴스 정보로 넘겨짐 
+useHistory    //  let history = useHistory(); // push("/"), history.replace(location.state.from);
+useLocation   //  let location = useLocation();
+useParams // Route의 /:변수명 과 같이씀
+useRouteMatch   // { path, url } , path: Route의 path, url : 루트부터의 경로
+ let match = useRouteMatch({
+    path: to,
+    exact: activeOnlyWhenExact
+  });     // 커스텀 링크 생성 시 , (링크에 효과 줄 떄?  ),  // 현재 url의 path와 파라미터path가 동일해서 인스턴스 생성
+
+
+태그 안에서 바로 사용가능 변수(전역으로 공유 되는 듯)
+location
+match   // Route path정보, 커스텀 링크 생성 시 <Link /> 태그에 변화 줄 때 
+
+
+
+@@styled-components
+
+
+

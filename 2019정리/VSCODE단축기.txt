@@ -1,0 +1,35 @@
+CTRL K O : 폴더 열기
+CTRL O : 파일 열기
+CTRL B : 사이드바 토글
+SHIFT ALT F : 문서 자동 정렬
+SHIFT ALT A : 블럭 주석
+CTRL SHIFT [ : 코드 접기
+CTRL SHIFT ] : 코드 펼치기
+
+CTRL D : 같은 단어 다중 선택, 한번 더 누르면 동시 수정가능
+CTRL F2 : 커서 준 단어 모두 선택
+CTRL G : 라인 이동
+
+CTRL \ : 화면 추가
+CTRL 좌우 방향키 : 화면 추가, 닫기
+CTRL SHIFT \ : 블럭 앞 뒤 이동
+ctrl+, : 기본설정, vscode 의 모든 설정은 파일>기본설정>설정에 지정
+
+CTRL alt 위아래 방향키 : 다중 커서, 취소는 esc
+
+ctrl+g : 파일의 특정 행으로 이동
+ctrl+p : 모든 파일을 단축키로 빠르게 열수 있다. (빠른열기)
+ctrl+p 를 눌러 ?를 입력하면 명령창에서 행할수 있는 명령 목록이 나온다.
+ctrl+shift+F: 현재 프로젝트 전체 파일에서 검색
+
+언어 Setting
+Ctrl + P 를 누른 다음 > Configure Language
+
+theme Setting
+F1(Ctrl Shift p) > theme 입력 후 테마를 선택.
+
+shift alt 드래그 or 클릭 : 마우스따라 다중 선택
+
+ctrl+shift+m : 상태표시줄, 에디터 하단에 현재 상태를 표시
+ctrl+shift+x : 확장프로그램, 확장 기능 마켓 플레이스에서 다운로드해서 사용
+ctrl+b : 사이드바 전환

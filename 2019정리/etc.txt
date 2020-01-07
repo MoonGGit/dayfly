@@ -1,0 +1,85 @@
+@ rest센스
+밑줄(_)은 URI에 사용하지 않는다.
+URI 경로에는 소문자가 적합하다.
+대표적인 HTTP 메소드 4가지
+GET: 해당 리소스를 조회
+POST: 해당 URL를 요청하면 리소스를 생성
+PUT: 해당 리소스를 수정
+DELETE: 해당 리소스를 삭제
+
+SyntheticEvent : 합성 이벤트
+sibling : 형제
+implicit global : 암묵적 전역 변수      // var생략 시 
+minify : 경량화 
+recursive : 반복되는
+
+
+JABWT - Java APIs for Bluetooth Wireless Technology (블루투스 무선기술)
+MIDlet - Mobile Information Device Profile(MIDP)의 어플리케이션
+Java ME는 이전에는  Java 2 Platform, Micro Edition 또는 J2ME 
+J2SE - Java 2 Platform Standard Edition 
+J2SE 용 JSR 82
+JSR-82 - Java Specification(설명서,사양) Request 
+JCP - Java Community Process 
+TCK - Technology Compatibility Kit(기술 호환성 키트)
+
+DAO : Data Access Object
+DTO : Data Transfer Object
+
+PHP : Personal Home Page
+ASP : Active Server Page - DLL, OCX이용
+JSP : Java Script Pages - 서블릿이용
+IIS : Internet Information Server 
+JSTL : JavaServer Pages Standard Tag Library
+XML : eXtensible Markup Language, 확장성 마크업 언어
+
+ECMA : European Computer Manufacturers Association 
+ECMAScript(에크마스크립트)는 자바스크립트를 이루는 코어(Core) 스크립트 언어
+ECMAScript를 ES라 부른다.
+ES5는 2009년에 ES6은 2015에 제작되었음.
+
+RSS : Really Simple Syndication, 초간편 배포, XML기반의 콘텐츠 배급 포맷
+cURL : Client URL Library Functions, PHP에서 서버간의 통신 라이브러리
+SVG : Scalable Vector Graphic, 웹을위한 벡터 기반 그래픽, Canvas는 비트맵 그래픽(자바스크립트로 그림)
+	XML형식의 그래픽 정의, 확대와 변경 시 손상 없음
+	텍스트편집기로 편집 가능, 색인 및 압축, 확장, 고품질
+
+TCP : Transmission Control Protocol
+UDP : User Datagram Protocol
+Declaration : 선언문
+identifier  : 식별자
+implicit object : 내장객체
+URL(Uniform Resource Locator) : 서버가 제공하는 파일들의 위치
+URI(Uniform Resource Identifier) : URL로부터 자원을 식별, HTTP프로토콜, 호스트명, port번호 등 제외함
+
+Inheritance : 상속
+Polymorphism : 다형성
+generic : 포괄적인
+
+클라우드 컴퓨팅 : 인터넷 기반으로 as a Service로 제공되는 컴퓨팅 환경, 
+IaaS : Infrastructure as a Service - IT하드웨어 자원(서버, 데스크톱, 스토리지)을 클라우드 서비스로 빌려 씀
+Paas : Platform as a Service - 개발환경을 제공받음
+Saas : Software as a Service - 소프트웨어자체를 빌려씀
+VOD : Video On Demand
+IVI : In-Vehicle Infotainment
+
+discouraged: 낙담한 낙심한, 권장되지 않는
+
+Declaration : 선언문
+identifier  : 식별자
+implicit object : 내장객체
+URL(Uniform Resource Locator) : 서버가 제공하는 파일들의 위치
+URI(Uniform Resource Identifier) : URL로부터 자원을 식별, HTTP프로토콜, 호스트명, port번호 등 제외함
+
+Well Know Port Numbers : 0~1023		
+	// 국제인터넷주소관리기구(CANN)가 특정 앱용으로 예약한 포트
+Registered Port Numbers : 1024~49151	
+	// 회사에서 등록, 사용가능
+Dynamic Or Private Port Numbers : 49152~65535	
+	// 운영체제가 부여하는 동적포트, 또는 개인적 사용가능
+
+FTP - 21
+
+ASP(베이직기반 언어) - IIS(웹서버임) : MS, MS SQL, 쉬움, windows서버
+PHP(C기반 언어) - APACHE(서버) : 공개용, 작고빠름, 중소형, 주로 리눅스, My or MS SQL
+JSP(JAVA기반 언어) - TOMCAT(서버) : 보안성, 은행, 어렵 , 리눅 or 윈도우, 독립(JVM)

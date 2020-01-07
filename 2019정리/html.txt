@@ -1,0 +1,44 @@
+<input />, <textarea />, <select /> 태그들 value 옵션 사용 가능 ! 리액트 동일
+select의 multiple옵션 : 여러개 선택 가능
+
+<input type="file" id="input">
+const selectedFile = document.getElementById('input').files[0];
+<input type="file" id="input" multiple onchange="handleFiles(this.files)">
+
+*js파일 용량 표시
+window.onload = function(){
+	document.getElementById("dd").addEventListener('change',function(e){
+		var p = document.createElement('p');
+		p.innerHTML="용량 : " + (document.getElementById("dd").files[0].size)+"바이트 입니닷 ㅎㅎ ";
+					// 파일 속성 -> name, size, type
+		document.body.appendChild(p);
+	});
+};
+
+var selectForm = document.forms[index];             // index대신에 "폼의 이름" 사용 가능!
+var selectFormElement = document.forms[index].elements[index];
+document.form_name.input_name.value="값";
+
+appendChild는 DOM 함수이고      // 문자열삽입도 가능
+append는 JavaScript 함수        // 무조건 엘리먼트
+
+<form>
+  <fieldset>
+    <legend>Personalia:</legend>
+    Name: <input type="text"><br>
+    Email: <input type="text"><br>
+    Date of birth: <input type="text">
+  </fieldset>
+</form>
+
+<a href="#maincontent">Skip to main content</a>         // 해당 페이지에서 이동하기
+...
+<main id="maincontent">
+
+스크린리더 확장 속성
+aria-*
+aria-haspopup="true"                // "menu"와 동일한 의미, 
+aria-expanded={this.state.isOpen}   // 패널이 표시되는 유무, true or false 
+
+disabled, required, checked, autofocus, readOnly 등 일부 속성은 폼 요소에서만 사용
+

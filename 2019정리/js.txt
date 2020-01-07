@@ -1,0 +1,479 @@
+개행 이어쓰기 할 때 \(역슬래쉬) 사용
+변수명 첫 글자 : $, _, 영문자
+★
+자바스크립트는 ES6의 let, const를 포함하여 모든 선언(var, let, const, function, function*, class)을 호이스팅(Hoisting)한다
+
+*async
+웹페이지 파싱과 외부 스크립트 파일의 다운로드가 동시에 진행된다. 
+스크립트는 다운로드 완료 직후 실행된다. IE9 이하 버전은 지원하지 않는다.
+
+*defer
+웹페이지 파싱과 외부 스크립트 파일의 다운로드가 동시에 진행된다.
+ 스크립트는 웹페이지 파싱 완료 직후 실행된다. 
+IE9 이하 버전에서 정상적으로 동작하지 않을 수 있다.
+ex)
+<script async src="extern.js"></script>
+<script defer src="extern.js"></script>
+
+
+args = [1,2,3,4];
+function arrFunc(arg1, arg2[ arg3 ...]){
+    return ...;
+}
+arrFunc.apply(null, args);      //  인자들을 받는 함수 일 경우, 이렇게 배열로 전달 가능
+Math.min.apply(null, args);
+
+testFunc = (a,b) => ( { result : a + b} );      // 객체 리턴 시 괄호!
+
+arg.find(predi)     // 만족하는 값
+arg.findIndex(predi)    // 만족하는 값의 인덱스
+arg.some(predi)     // 하나라도 만족 시 true
+arg.every(predi)    // 모든 값을 만족 시 true
+arr.slice([begin[, end]])   // -지정 가능,  slice(2,-1) 는 세번째부터 끝에서 두번째 요소까지, 원본 영향없음
+array.splice(start[, deleteCount[, item1[, item2[, ...]]]])
+    // 시작(start,-가능)부터 지정 갯수(deleteCount)를 자르고, 원본배열에 item들을 추가
+    // splice(-3,2) 는 뒤에서 세번째 요소부터 두개까지
+    // 원본배열에서 삭제됨
+[].push()	// 뒤에 넣기
+[].pop()	// 뒤에서 뽑기
+[].shift()	// 앞에서 뽑기
+[].unshift()	// 앞에 넣기
+[1,2,3,4].join('-')
+	// "1-2-3-4"
+
+let arr = new Array(40) // empty로 할당됨
+arr.fill(1)
+	// 배열 전체 1 대입(빈 매개 -> undefined)
+let arr = new Array(10).fill().map((v,i)=>i)
+	// empty는 순회가 안됨, undefined는 됨
+
+
+String.substring(시작, 끝)
+String.substr(시작, 길이)
+String.startsWith(str)
+String.endsWith(str)
+String.includes(str)
+
+Object.assign     // 첫 매개의 원본에 영향을 미침
+Object.create     // obj복제
+Object.entries
+Object.defineProperty	객체의 필드를 정의하는 함수
+Object.getPrototypeOf	인자로 넘어오는 객체의 프로토타입을 추출한다.
+Object.keys	인자로 넘어오는 객체의 키를 배열로 반환한다.
+Object.getOwnPropertyNames	프로토타입 체이닝에 걸려있는 필드를 제외하고 객체가 직접 들고 있는 필드의 key를 배열형태로 반환한다.
+Object.freeze	객체를 얼린다라는 표현, 즉 불변(immutable)으로 만든다.    // isFrozen
+  //  하지만 객체 내부의 객체(Nested Object)는 변경가능하다.
+  -->내부 객체까지 변경 불가능하게 만들려면 Deep freeze를 하여야 한다.
+function deepFreeze(obj) {
+  const props = Object.getOwnPropertyNames(obj);
+
+  props.forEach((name) => {
+    const prop = obj[name];
+    if(typeof prop === 'object' && prop !== null) {
+      deepFreeze(prop);
+    }
+  });
+  return Object.freeze(obj);
+}
+
+
+Math.min(1,2,3);
+Math.max(1,2,3);
+1 + undefined // NaN (undefined → NaN)
+
+new Array(1,2,3)      //
+new Set([1,2,3])      // has, add, delete
+new Map([['a', 1], ['b', 2], ['c', 3]]);  // keys, values, entries 
+  // set, get
+new WeakSet()
+new WeakMap()
+참조가 있는 값만 저장 가능(배열, 객체, 함수)
+
+*정규 표현식(RegExp) 객체
+var 변수 = /패턴/플래그;		// i:대소문자 구별않함, g: 전체문자열(발견시 중지)
+var 변수 = new RegExp("패턴", "플래그");
+-메소드 
+search()	->  str.search(/java/i); // 찾은 인덱스 반환
+replace()	->  str.replace(/java/i,"HTML5");
+test()		->  regPtn.test(str);	//true or false
+exec()		->  regPtn.exec(str);	// 일치 문자열 반환
+match()		->  str.match(regPtn);	// 일치 문자열 반환(여러개면 배열로)
+\w -> 모든문자
+\W -> 대소문자,숫자 _를 제외한 모든 문자
+\d -> 숫자
+\D -> 숫자를 제외한 모든 문자
+\s -> 공백문자(공백, 탭, 줄바꿈 등)
+\S -> 공백문자를 제외한 모든 문자
+p{n} -> p가 n개인 문자열
+n+ -> 적어도 n개 이상, // ?? n개의 문자열을 찾음
+n* -> 0개이상, //?? n개가 포함된 문자열을 찾음
+n? -> n이 0또는 1회있는 문자열
+[0-9] -> 0~9중의 하나
+[a-z] -> a~z중 하나
+[qwer] -> 네 문자중 하나
+(qwer) -> "qwer"
+* -> 0개 이상
++ -> 1개 이상
+? -> 0개 or 1개
+{m, n} -> m회 이상 n회 이하
+
+
+*Array객체의 메소드
+slice
+join	// 하나의 문자열로, 구분자 매개로 줘도댐
+concat	// 두 배열을 결합
+toString
+splice	// 지정된 배열값을 추가 또는 삭제, (start index, delete conunt, 추가할 요소, 추가할 요소,...) 
+	start부터 count만큼 지우고 추가, 지운배열 리턴
+shift	// 배렷 첫 요소 삭제
+unshift	// 배열 첫 요소에 추가
+pop	// 배열 마지막요소 삭제
+push	// 배열 마지막요소에 추가
+reverse
+indexOf	// 없으면 -1
+sort
+arr.sort(function(a, b){
+	return a-b;});	// 오름차순 정렬
+arr.sort(function(a, b){
+	return 0.5 - Math.random()});	// 랜덤 배치
+객체의 속성과 메서드는 delete 연산자로 삭제가능
+ex) delete myCar.color;		// 인덱스 요소는 그대로, 값만 undefined
+
+*String객체의 메소드
+charAt(n)
+concat("문자열")
+indexOf("문자",n)	// n이 주어지면 인덱스n부터 검색
+lastIndexOf("문자")	// 끝부터 검색
+charCodeAt(n)
+match("문자열")		// 없으면 null
+replace("문자1","문자2")	// 원본은 그대로, 새문자열을 반환
+	// (/java/g, "javaScript")  ->  일치한 모든 문자열을 변경, i는 대소문자 구분안하도록
+search('문자')
+slice(n,m)	// (7,13) -> 인덱스 7부터 12까지, (-12,-6) -> 끝에서 12번째부터 끝에서 6번째까지
+split('separator')	// separator로 나누어 문자열배열 리턴
+substring(n,m)		// (7,13) -> 인덱스 7부터 인덱스 12까지
+substr(n,m)		// (7,6) -> 인덱스 7부터 6개 문자열
+toLowerCase()
+toUpperCase()
+toString()
+valueOf()
+
+*Date객체 분홍책 178P참고
+now.setSeconds(now.getSeconds()+1);
+
+*내장 함수
+encodeURI("...")	// 영문,숫자,일부기호제외, 문자를 유니코드값으로 인코딩
+encodeURIComponent("...") 	// 영문,숫자제외, 문자를 유니코드로
+decodeURI("...")	
+decodeURIComponent("...")
+parseInt(String[, nBase])	// 정수로 변경, nBase는 몇진수? 8진수 -> 8,  ex) 5.12 -> 5, 15px -> 15
+parseFloat("...")
+String(값)	// 5 -> "5"
+Number("...")	// "5" -> 5
+Boolean(값)	// 5 -> true, null -> false
+eval("...")	// 전달 문자열을 자바스크립트 문장으로 인식하여 처리
+isFinite(...);	//유한수인가?
+isNaN(...);	//숫자가 아닌가?
+var str = String(123);		// "123"
+var num = Number("123");	// 123
+var num = parseInt("123");	// 123
+document.write(typeof str);	// str의 자료형을 보여줌
+escape()	// 16진수 아스키코드로 변경
+unescape()	// ISO-Latin-1로 변경
+call()		// 함수.call(...) -> 함수기능을 사용하여 매개이용(this같은게 매개를 가르키게됨)
+apply()		// Math.max.apply(null,[3,4,5]); -> 배열로 이용( 배열메소드에는 max()가 없어서 이렇게 이용)
+
+
+
+
+지연평가 ex)
+const array = ["9", "91", "95", "96", "99"];
+const x = array.slice().reduce((acc, curr, i, arr) => {  // notice the "slice(0)"랑 동일
+ if (i === 2) arr.splice(0); // 검색 대상 배열을 없애버림으로 종료시킴
+ return (acc += curr);
+}, "");
+
+간단 groupBy... 좀 더 찾아보자
+var groupBy = function(xs, key) {
+  return xs.reduce(function(rv, x) {
+    (rv[x[key]] = rv[x[key]] || []).push(x);
+    return rv;
+  }, {});
+};
+var t = new Object();
+t['att1']="attr1";
+t['att2']="attr2";
+
+
+var myCar = {company: "Lamborghini", model: "Lamborghini Veneno Roadster", year: 2014};
+delete myCar.company;
+"company" in myCar; // false를 반환합니다.
+
+console.log(typeof a === undefined)
+
+비동기 ex)
+function square(a) {
+  return new Promise(function(resolve) {
+    setTimeout(function() {
+      resolve(a * a);
+    }, 500);
+  });
+}
+var list = [2, 3, 4];
+new Promise(function(resolve) {
+  (function recur(res) {
+    if (list.length == res.length) return resolve(res);
+    square(list[res.length]).then(function(val) {
+      res.push(val);
+      recur(res);
+    });
+  })([]);
+}).then(console.log);     // 2 -> 3-> 4 -> 결과 
+
+_.go(list,
+  _.map(square),
+  _.map(square),
+  _.map(square),
+  console.log);
+function _go(arg) {
+  var fns = _rest(arguments);
+  return _pipe.apply(null, fns)(arg);
+}
+참고 : https://github.com/indongyoo/functional-javascript/blob/master/%EC%9D%B8%ED%94%84%EB%9F%B0-%EB%8F%99%EC%98%81%EC%83%81-%EA%B0%95%EC%9D%98-%EC%98%88%EC%A0%9C/js/_.js
+
+
+ symbol
+심볼은 주로 이름의 충돌 위험이 없는 유일한 객체의 프로퍼티 키(property key)를 만들기 위해 사용한다. 
+심볼은 Symbol 함수를 호출해 생성한다. 이때 생성된 심볼 값은 다른 심볼 값들과 다른 유일한 심볼 값이다
+// 심볼 key는 이름의 충돌 위험이 없는 유일한 객체의 프로퍼티 키
+var key = Symbol('key');
+console.log(typeof key); // symbol
+var obj = {};
+obj[key] = 'value';
+console.log(obj[key]); // value
+
+##**중요꽝꽝**##
+for문은 객테[Symbol.iterator]()을 따름  -> iterable객체만 순환 가능(Array, Map, Set, DOM객체(노드포함), )
+[1,2,3][Symbol.iterator]().next().value()
+generator -> iterator 반환
+function *gen(){      // 제너레이터는 *붙여서 선언
+  yield 1;
+  yield 2;
+  yield 3;
+  return 100;     // done이 true면서 값 100 을 마지막에 반환, for문으로는 안나옴
+}
+let iter = gen();
+iter[Symbol.iterator]() == iter;     // true
+
+제너레이터 ex)
+  function* infinity(i = 0) {
+    while (true) yield i++;
+  }
+  function* limit(l, iter) {
+    for (const a of iter) {
+      yield a;
+      if (a == l) return;
+    }
+  }
+  function* odds(l) {
+    for (const a of limit(l, infinity(1))) {
+      if (a % 2) yield a;
+    }
+  }
+  for (const a of odds(40)) console.log(a);
+
+iterator 사용법 -> for...of, 전개연산자, 구조분해 
+console.log(odd(5));
+console.log([...odd(10), ...odd(20)]);
+const [head, ...rest] = odd(20);
+
+range = function *(l){
+  let i= -1;
+  while(++i<l){ 
+    console.log("도는중");  // iterator는 순회할 때 마다 코드가 평가됨 
+    yield i;
+  }
+}
+for( i of range(5)){
+  console.log(i) 
+};    //iterator는 순회할 때 마다 코드가 평가됨 
+
+
+( true && (<div />))    -> es6, true시 뒷 코드 실행
+( false || (<div />))   -> es6, false시 뒷 코드 실행
+false
+undefined
+null
+0, -0
+NaN(1 + undefined)
+’’ (빈문자열)         // -> false반환
+
+setInterval -> clearInterval
+setTimeout -> clearTimeout
+
+ 	//순수 JS에서는(ES6+) 백틱(`)과 ${varName}(템플릿 리터럴) 사용
+	// -> '문자열 내용 ${dateTimeNow}'
+
+componentDidMount(){
+ this._getMovies();
+}
+_getMovies = async () => {
+ const movies = await this._callApi()
+ this.setState({
+  movies
+ })
+}	// 비동기로 실행
+
+@@통신
+var xhr = new XMLHttpRequest();
+xhr.open('GET','./~.html');
+xhr.onreadystatechange = function(){
+ if(xhr.readyState ===4 && xhr.status ===200) { console.log(xhr.responseText) }
+ }
+xhr.send();
+4 : 통신이 끝났음
+200 : 성공
+
+xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+xhr.send('data1=123&data2=456');
+
+const list1 = ['apple','orange']
+const list2 = [].concat(list1, 'banana');   // es6?
+
+func.apply(null, arr)
+--> null.func(arr)
+
+const newObj = Object.setPrototypeOf( 타켓, 추가 )
+	// 타겟에 추가, 타겟반환 (* 타겟의 __proto__로 추가)
+
+Object.prototype : 생성자 
+Object.__proto__ : 상위 객체의 생성자(prototype)
+
+export default function a(){ ... }
+ --> import a from '~'
+export function a(){...}
+ --> import {a}
+*export default const ~ 하면 에러
+ -> const ~
+ -> export default ~
+	// 나눠서 ㄱㄱ 
+
+// 기명 함수 표현식(named function expression)
+var namedFunc = function multiply(a, b) {
+  return a * b;
+};
+// 익명 함수 표현식(anonymous function expression)
+var anonymousFunc = function(a, b) {
+  return a * b;
+};
+
+console.log(namedFunc.name);     // "multiply"
+console.log(anonymousFunc.name); // "anonymousFunc"
+
+function foo() {}
+console.log(foo.length); // 0, 매개변수 갯수
+
+for(var i in array){
+            console.log(array[i].name+'/'+array[i].link);
+        }		// 배열인 경우 인덱스로 이용한다...
+for(var attr in obj){ ... }	// 객체일 경우 속성명으로 사용 
+
+*객체 생성자
+function 함수명(매개 ..){
+	this.속성명 = 값;
+	// this.함수 = function(){...}	프로토타입으로 자원활용
+}
+함수명.prototype.함수 = function(){ this.속성명 ... }	// 공용함수 등록
+var 참조변수 = 함수명;
+--> var 참조변수 = { 속성명:값, 함수: function(){..} }
+
+*프로토타입 // 모든 객체는 프로토타입에서 속성과 메서드를 상속받음
+ -> 생성자 외부에 메서드를 정의 
+객체명.prototype.메서드or 변수 = function() {... } or 값;
+ -> 메서드만 공유
+
+-링크 : 프로토타입 객체 멤버에 접근 가능( 상속 기능 구현)
+classical방식 - new사용
+ex) 
+function Car(m){ this.model = m || "Benz"; }
+function childCar(Model){}
+childCar.prototype = new Car();
+var myCar = new childCar("BMW");
+
+prototypical방식 - 리터럴객체와 Object.create()사용 , 선호됨
+ '부모객체' 생성 -> var 자식객체 = Object.create('부모객체');
+		자식객체.변수 or 메서드 추가
+
+*try - catch
+ catch(err)
+  err.message;
+
+ throw "strrr";	// console.log(err) -> strrr
+
+error객체의 속성
+name
+ RangeError - 범위를 벗어난 숫자
+ ReferenceError - 잘못된 참조
+ SyntaxError - 구문 오류
+ TypeError - 형식 오류
+ URIError - encode URI()의 오류
+message
+
+	// React는 document에 리스너 연결함 -> 좀더 빠름
+document.removeEventListener('mouseover', getEventListeners(document).mouseover[0].listener, false)
+
+// getFoo is property which isn't enumerable
+var myObj = Object.create({}, {
+  getFoo: {
+    value: function () { return this.foo; }
+  } 
+});
+myObj.foo = 1;
+console.log(Object.keys(myObj)); // console: ['foo']
+
+@@ 중첩 객체 스프레드 연산
+a = {'c':11,
+  'd':22}
+a.f={
+  'c':44,
+  'd':55
+}
+console.log({...a, c:1234,  f:{...a.f, d:5678}})
+
+
+
+
+
+
+
+
+
+
+
+
+@@커스텀 이벤트(customEvent)
+-IE11 이상
+//const evt = new CustomEvent('@click')
+const evt = new CustomEvent('@click', {detail: 'some data'})
+document.dispatchEvent(evt)
+document.querySelector('a').addEventListener('@click', evt => {
+  evt.detail // 'some data'
+})
+-IE11 미만
+const evt = document.createEvent('CustomEvent')
+evt.initCustomeEvent('@click', true, false, 'some data')    //이벤트명, 버블(bubble)?, 취송가능여부(cancelable)?, 전달할 데이터(detail)
+document.dispatchEvent(evt)
+
+
+
+@성능테스트 시 
+console.time('이름일치');
+동작코드;
+console.timeEnd('이름일치');
+  // 이름일치 : 시간ms    으로 나옴
+
+performance.now()
+new Date()
+	// 시간 체크 
+
+
