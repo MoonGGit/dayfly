@@ -51,9 +51,9 @@ module.exports = {
                     loader: 'babel-loader',
                     // 최상위 디렉터리에서 .babelrc 파일
                     // 내용 : {"presets": ["@babel/preset-env", "@babel/preset-react"]}
-                    options: {
-                        presets: ["@babel/preset-env", "@babel/preset-react"]
-                    }
+                    // options: {
+                    //     presets: ["@babel/preset-env", "@babel/preset-react"]
+                    // }
                 }
                 // -> use: ['babel-loader']
             },
@@ -69,6 +69,17 @@ module.exports = {
             {
                 test: /\.json$/,
                 loader: 'json-loader'
+            },
+            {
+                test: /\.(png|jpe?g|gif)$/i,
+                use: [
+                    {
+                      loader: 'file-loader',
+                      options: {
+                        name: '[name].[ext]?[hash]',
+                      }
+                    }
+                  ]
             },
         /* {
                 test: /\.css$/,

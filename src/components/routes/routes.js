@@ -1,5 +1,5 @@
 import React from 'react';
-//import PictureFrame from '../pictureFrame';
+import PictureFrame from '../pictureFrame';
 
 /* 
     path
@@ -51,11 +51,11 @@ const routes = [
         path: "/",
         label: "Home",
         exact: true,
-        component: ()=> <div>main Test</div>
+        component: ()=> <PictureFrame />
     },
     {
         label: "튜토리얼 수듄..",
-        subNav: tutorialSubNav
+        routes: tutorialSubNav
     }
 ]
 

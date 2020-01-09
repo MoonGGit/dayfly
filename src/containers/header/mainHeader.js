@@ -12,7 +12,7 @@ const MainLogo = styled.div`
 const MainHeader = ({ className }) => {
     return(
         <div className={className}>
-            <ThemeButton />
+            <ThemeButton /> 리액트 (＃°Д°) 
             <MainLogo as="a" href="/">Home</MainLogo>
             <Clock />
             <MainNavigator />
@@ -23,7 +23,11 @@ const MainHeader = ({ className }) => {
 
 const StyledMainHeader = styled(MainHeader)`
         text-align: center;
+        width: 85%;
+        margin: 0 auto;
+        @media screen and (max-width: 600px){
+            width: 100%;
+        }
 `;
-
     
 export default StyledMainHeader;

@@ -1,17 +1,18 @@
 import React from 'react';
-import { Route, useRouteMatch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
-export default function({ label, to, exact, className}) {
-    let match = useRouteMatch({
-      path: to,
-      exact: exact
-    });     // 현재 url의 path와 파라미터path가 동일하면 인스턴스 생성
-  
+export default function(route) {
     return (
-      <div className={className + (match ? " active" : "")}>
-        {match && "앙"}
-        <Link to={to}>{label}</Link>
-      </div>
+      <Route
+        path={route.path}
+        render={props => (
+          <>
+          <h1>{props.label}</h1>
+          <route.component {...props} routes={route.routes} />
+          </>
+        )}
+      />
     );
   }
+
   

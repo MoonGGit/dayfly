@@ -1,5 +1,6 @@
 import React from 'react';
 import CustomLink from '../customLink';
+import Hamburger from '../hamburger';
 import styled, {keyframes} from 'styled-components';
 import routes from './routes';
 
@@ -18,6 +19,10 @@ const selectedKeyFrames = keyframes`
 `;
 
 const StyledCustomLink = styled(CustomLink)`
+    margin-left: ${props=>props.deep != 0 ? 20 : 0}px;
+    text-align: left;
+    width: 150px;
+
     &.active span{
         display: inline-block;
         animation: ${selectedKeyFrames} 2s linear infinite;
@@ -30,11 +35,11 @@ const StyledCustomLink = styled(CustomLink)`
             text-decoration: underline;
         }
     }
-    text-align: left;
-    width: 250px;
 `;
 
 const SubNavDiv = styled.div`
+    text-align: left;
+    width: 150px;
     & > a {
         color: palevioletred;
     }
@@ -46,37 +51,65 @@ const SubNavDiv = styled.div`
         display: none;
     }
     &:hover, &:active{
+        cursor: pointer;
         ${StyledCustomLink} {
             display: block;
         }
     }
-    width: 200px;
-    text-align: left;
 `;
 
-const MainNavContainer = styled.div`
+const Nav = styled.div`
     display: inline-flex;
-    float: left;
-`
 
+    @media screen and (max-width: 600px){
+        display: none;
+    }
+
+`;
+
+const StyledHamburger = styled(Hamburger)`
+    display: none;
+    cursor: pointer;
+    @media screen and (max-width: 600px){
+        display: inline-block;
+    }
+`;
+
+const MainNavDiv = styled.div`
+    background: grey;
+    text-align: right;
+    @media screen and (max-width: 600px){
+        text-align: left;
+    }
+`;
 
 function createNav(routes, deep){
     return routes.map((route, i) => {
-        return route.subNav ? (
-                <SubNavDiv key={i} deep={deep}>
-                    <span>
-                        {route.label}
-                    </span>
-                    <div>
-                        {createNav(route.subNav, ++deep)}
-                    </div>
-                </SubNavDiv>
-            ) : (
-                <StyledCustomLink key={i} to={route.path} label={route.label} exact={route.exact} deep={deep}
-                    selectedMark={" ⭐ "} watingMark=" ‣ "
-                />
-            );
-        });
+            return route.routes ? (
+                    <SubNavDiv key={i}>
+                        <span>
+                            {route.label}
+                        </span>
+                        <div>
+                            {createNav(route.routes, ++deep)}
+                        </div>
+                    </SubNavDiv>
+                ) : (
+                    <StyledCustomLink key={i} to={route.path} label={route.label} exact={route.exact} deep={deep}
+                        selectedMark={" ⭐ "} watingMark=" ‣ "/>
+                );
+            })
     };
 
-export default () => <MainNavContainer>{createNav(routes, 0)}</MainNavContainer>
+export default () => (
+    <MainNavDiv>
+        <StyledHamburger label="🍔" onClick={()=>{
+            let navEl = document.getElementById("mainNav");
+            console.log(navEl);
+            navEl.style.display = navEl.style.display ? "" : "block";
+        }}/>
+        <Nav id="mainNav">
+            {createNav(routes, 0)}
+        </Nav>
+    </MainNavDiv>
+    )

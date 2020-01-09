@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router } from'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components'
 import MainHeader from '../containers/header/mainHeader'
-//import StyledMainContent from '../containers/contents/mainContent'
+import MainContent from '../containers/contents/mainContent'
 //import StyledMainFooter from '../containers/footer/mainFooter'
 
 import GlobalStyle from '../styles/globalStyling'
@@ -23,8 +23,8 @@ const Main = props => {
             <ThemeProvider theme={props.theme}>
                 <AppBackgroundDiv>
                     <MainHeader />
-                {/*  <StyledMainContent />
-                    <StyledMainFooter /> */}
+                    <MainContent />
+                    {/* <StyledMainFooter />  */}
                 </AppBackgroundDiv>
             </ThemeProvider>
         </Router>

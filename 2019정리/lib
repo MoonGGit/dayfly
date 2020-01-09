@@ -91,15 +91,12 @@ useRouteMatch   // { path, url } , path: Route의 path, url : 루트부터의 �
     path: to,
     exact: activeOnlyWhenExact
   });     // 커스텀 링크 생성 시 , (링크에 효과 줄 떄?  ),  // 현재 url의 path와 파라미터path가 동일해서 인스턴스 생성
+  match.params
 
 
-태그 안에서 바로 사용가능 변수(전역으로 공유 되는 듯)
+Route태그 안에서 바로 사용가능 변수(전역으로 공유 되는 듯), component, render, children
 location
 match   // Route path정보, 커스텀 링크 생성 시 <Link /> 태그에 변화 줄 때 
-
-
+history
 
 @@styled-components
-
-
-
