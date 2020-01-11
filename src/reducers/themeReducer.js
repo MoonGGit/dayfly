@@ -8,7 +8,7 @@ let theme = {
     },
     black :{
         themeName: 'black',
-        background: '#010115d4',
+        background: '#212529',
         color: 'snow'
     }
 }

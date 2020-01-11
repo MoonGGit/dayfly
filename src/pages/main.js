@@ -8,19 +8,31 @@ import MainContent from '../containers/contents/mainContent'
 
 import GlobalStyle from '../styles/globalStyling'
 
-const AppBackgroundDiv = styled.div`
+const AppBackground = styled.div`
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at bottom,#1b2735 70%,#090a0f 100%);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+`;
+
+const ThemeWrapper = styled.div`
     background: ${props => props.theme.background};
     color: ${props => props.theme.color};
-    width: 100%;
+    width: 85%;
     min-height: 100%;
+    margin: auto;
+    font-size: 20px;
+    @media screen and (max-width: 600px){
+        width: 100%;
+        font-size: 15px;
+    }
 `;
 
 const MainApp = styled.div`
-    width: 85%;
-    margin: 0 auto;
-    @media screen and (max-width: 600px){
-        width: 100%;
-    }
+    
 `;
 
 const Main = props => {
@@ -28,13 +40,14 @@ const Main = props => {
         <Router>
             <GlobalStyle />
             <ThemeProvider theme={props.theme}>
-                <AppBackgroundDiv>
+                <AppBackground />
+                <ThemeWrapper>
                     <MainApp>
                         <MainHeader />
                         <MainContent />
                         {/* <StyledMainFooter />  */}
                     </MainApp>
-                </AppBackgroundDiv>
+                </ThemeWrapper>
             </ThemeProvider>
         </Router>
     )

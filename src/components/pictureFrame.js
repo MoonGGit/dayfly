@@ -9,7 +9,7 @@ const imgUrl = [
   seulgi2,
   seulgi3,
   "https://www.youtube.com/embed/dRfIfpKLvXA",
-  "https://youtu.be/uR8Mrt1IpXg"
+  "https://www.youtube.com/embed/uR8Mrt1IpXg"
 ]
 
 const $frameWidth="96%";

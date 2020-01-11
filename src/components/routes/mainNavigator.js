@@ -66,9 +66,12 @@ const Nav = styled.div`
     margin-top: 2px;
     @media screen and (max-width: 600px){
         display: none;
-        position: absolute;
+        position: fixed;
+        border-radius: 0 40px 40px 0;
         width: 100%;
-        height: 94%;
+        height: 95%;
+        background: #d1e1ef;
+        margin-top: 0px;
     }
 
 `;
@@ -78,6 +81,7 @@ const StyledHamburger = styled(Hamburger)`
     cursor: pointer;
     @media screen and (max-width: 600px){
         display: inline-block;
+        font-size: 20px;
     }
 `;
 
@@ -88,6 +92,7 @@ const MainNavDiv = styled.div`
     border-radius: 5px;
     @media screen and (max-width: 600px){
         text-align: left;
+        border-radius: unset;
     }
 `;
 

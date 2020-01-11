@@ -28,7 +28,7 @@ const ClockSpan = connect(mapStateToProps, null)(
 );
 
 // Clock의 부모(Dispatch)
-const Clock = (props) => {
+const Clock = ({ className, ...props}) => {
   useEffect(()=>{
     const interval = setInterval(()=>{
       props.setCurrentTime(new Date());
@@ -39,7 +39,7 @@ const Clock = (props) => {
   });
 
   return (
-    <div>
+    <div className={className}>
       <ClockSpan />  
     </div>
   )
