@@ -8,26 +8,35 @@ const MainLogo = styled.div`
     display: inline-block;
     color: mediumaquamarine;
     text-decoration: none;
+    
 `;
-const MainHeader = ({ className }) => {
-    return(
-        <div className={className}>
-            <ThemeButton /> 리액트 (＃°Д°) 
-            <MainLogo as="a" href="/">Home</MainLogo>
-            <Clock />
-            <MainNavigator />
-        </div>
-    )
-        
-}
 
-const StyledMainHeader = styled(MainHeader)`
+const MainHeader_Upper = styled.div`
+    width: 100%;
+    height: 100%;
+
+`;
+
+
+const MainHeaderWrapper = styled.div`
         text-align: center;
-        width: 85%;
-        margin: 0 auto;
         @media screen and (max-width: 600px){
-            width: 100%;
+            height: 6%
         }
 `;
+
+const MainHeader = () => {
+    return(
+        <MainHeaderWrapper>
+            <MainHeader_Upper>
+                <ThemeButton /> 리액트 (＃°Д°) 
+                <MainLogo as="a" href="/">Home</MainLogo>
+                <Clock />
+            </MainHeader_Upper>
+            <MainNavigator />
+        </MainHeaderWrapper>
+    )
+}
+
     
-export default StyledMainHeader;
+export default MainHeader;

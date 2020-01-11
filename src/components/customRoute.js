@@ -1,16 +1,17 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-export default function(route) {
+export default function({className, ...route}) {
     return (
-      <Route
+      <Route 
         path={route.path}
+        exact={route.exact}
         render={props => (
-          <>
-          <h1>{props.label}</h1>
-          <route.component {...props} routes={route.routes} />
-          </>
-        )}
+            <div className={`${className} test`}>
+              <h2 className="content-title">{route.label}</h2>
+              <route.component {...props} routes={route.routes} />
+            </div>
+        )}  
       />
     );
   }

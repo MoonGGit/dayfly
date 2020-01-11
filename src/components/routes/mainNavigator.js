@@ -22,7 +22,6 @@ const StyledCustomLink = styled(CustomLink)`
     margin-left: ${props=>props.deep != 0 ? 20 : 0}px;
     text-align: left;
     width: 150px;
-
     &.active span{
         display: inline-block;
         animation: ${selectedKeyFrames} 2s linear infinite;
@@ -56,13 +55,20 @@ const SubNavDiv = styled.div`
             display: block;
         }
     }
+    & > div {
+        position: absolute;
+    }
+    
 `;
 
 const Nav = styled.div`
     display: inline-flex;
-
+    margin-top: 2px;
     @media screen and (max-width: 600px){
         display: none;
+        position: absolute;
+        width: 100%;
+        height: 94%;
     }
 
 `;
@@ -78,6 +84,8 @@ const StyledHamburger = styled(Hamburger)`
 const MainNavDiv = styled.div`
     background: grey;
     text-align: right;
+    height: 30px;
+    border-radius: 5px;
     @media screen and (max-width: 600px){
         text-align: left;
     }
@@ -103,9 +111,9 @@ function createNav(routes, deep){
 
 export default () => (
     <MainNavDiv>
-        <StyledHamburger label="🍔" onClick={()=>{
+        <StyledHamburger label="🍔" onClick={(event)=>{
+            event.target.style.display= "none";
             let navEl = document.getElementById("mainNav");
-            console.log(navEl);
             navEl.style.display = navEl.style.display ? "" : "block";
         }}/>
         <Nav id="mainNav">

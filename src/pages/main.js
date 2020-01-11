@@ -12,9 +12,16 @@ const AppBackgroundDiv = styled.div`
     background: ${props => props.theme.background};
     color: ${props => props.theme.color};
     width: 100%;
-    height: 100%;
+    min-height: 100%;
 `;
 
+const MainApp = styled.div`
+    width: 85%;
+    margin: 0 auto;
+    @media screen and (max-width: 600px){
+        width: 100%;
+    }
+`;
 
 const Main = props => {
     return(
@@ -22,9 +29,11 @@ const Main = props => {
             <GlobalStyle />
             <ThemeProvider theme={props.theme}>
                 <AppBackgroundDiv>
-                    <MainHeader />
-                    <MainContent />
-                    {/* <StyledMainFooter />  */}
+                    <MainApp>
+                        <MainHeader />
+                        <MainContent />
+                        {/* <StyledMainFooter />  */}
+                    </MainApp>
                 </AppBackgroundDiv>
             </ThemeProvider>
         </Router>
