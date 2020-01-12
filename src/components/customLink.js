@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
 
-export default function({ label, to, exact, className, selectedMark, watingMark}) {
+export default function({ className, to, exact, ...props }) {
     let match = useRouteMatch({
       path: to,
       exact: exact
@@ -10,9 +10,9 @@ export default function({ label, to, exact, className, selectedMark, watingMark}
     return (
       <div className={className + (match ? " active" : "")}>
         <span>
-          { (match && selectedMark) || watingMark}
+          { (match && props.selectedMark) || props.watingMark}
         </span>
-        <Link to={to}>{label}</Link>
+        <Link onClick={props.onClick} to={to}>{props.label}</Link>
       </div>
     );
   }
