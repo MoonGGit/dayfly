@@ -72,6 +72,57 @@ npm rebuild는 npm을 다시 설치하는 명령어입니다. 에러가 발생�
 npm config는 npm의 설정을 조작하는 명령어입니다. npm config list 하면 현재 설정들을 볼 수 있고, npm set [이름] [값], npm get [이름]으로 속성을 설정하거나 조회할 수 있습니다.
 
 
+@eslint
+
+VSCODE에서 eslint설치 
+
+$ npm install -g eslint
+$ eslint --init             // 해당 프로젝트에서, -g로 설치해서 터미널에서 실행해줌
+개발환경에 따라 옵션을 설정 해 줌
+
++ eslint-plugin-react@7.18.0
++ eslint@6.8.0
+도 같이 설치 해줌
+
+생성 된  .eslintrc.js 수정
+
+eslint적용시키고 싶지 않을 때
+~.js에서
+/* eslint-disable */
+alert('foo');
+/* eslint-enable */
+참고: https://eslint.org/docs/user-guide/configuring#disabling-rules-with-inline-comments
+
+
+@Prettier - Code formatter
+1. vscode 설정에서 javascript format enable의 체크를 해제해줌
+2. js파일에서 F1 > format document를 실행 시 뭔가 변경되며 eslint에러 발생 -> eslint규칙하고 Prettier규칙이 다름
+    //  settings.json에서 저장 시 자동포맷 "editor.formatOnSave": true
+3. 프로젝트 루트에서 .prettierrc 생성 또는 settings.json에서 설정해줌 
+{
+  "singleQuote": true,
+  "semi": true,
+  "useTabs": false,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "printWidth": 80
+}
+문자열을 사용 할 때에는 ' 를 사용합니다.
+코드는 ; 로 끝나야합니다.
+탭 대신에 스페이스를 사용합니다.
+들여쓰기 크기는 2칸입니다.
+객체나 배열을 작성 할 때, 원소 혹은 key-value 의 맨 뒤에있는 것에도 쉼표를 붙입니다.
+한 줄이 80칸이 넘지 않도록 합니다
+참고 : https://prettier.io/docs/en/options.html
+  https://ux.stories.pe.kr/150
+  
+
+@@ eslint-config-prettier -> ESLint 규칙을 비활성화 -> ESLint는 문법만, prettier는 스타일만 
+        // prettier-eslint  -> eslint설정으로 스타일 관리
+1.패키지 설치 npm install eslint-config-prettier
+2.package.json에 적용
+3.뭐가 먹히고 안먹히고 몰라서 일단 패스..
+
 
 
 
