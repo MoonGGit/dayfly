@@ -9,9 +9,9 @@ const loggerMiddleware = store => next => action => {
 
     // 액션 처리 후의 스토어 상태 기록
     console.log('다음 상태', store.getState());
-    console.log('\n'); 
+    console.log('\n');
 
     return result; // 여기서 반환하는 값은 store.dispatch(ACTION_TYPE) 했을때의 결과로 설정됩니다
-}
+};
 
 export default loggerMiddleware;

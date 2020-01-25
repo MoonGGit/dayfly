@@ -20,7 +20,7 @@ module.exports = {
     } */
     // 끄고 싶은 에러는 0, 그리고 경고처리만 하고 싶은 에러는 1
     rules: {
-        indent: ['error', 4],
+        //indent: ['error', 4],
         semi: ['error', 'always'],
         'no-trailing-spaces': 0,
         'keyword-spacing': 0,

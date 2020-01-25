@@ -444,13 +444,6 @@ console.log({...a, c:1234,  f:{...a.f, d:5678}})
 
 
 
-
-
-
-
-
-
-
 @@커스텀 이벤트(customEvent)
 -IE11 이상
 //const evt = new CustomEvent('@click')

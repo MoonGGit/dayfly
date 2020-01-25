@@ -1,17 +1,17 @@
-import { connect } from'react-redux';
+import { connect } from 'react-redux';
 import React from 'react';
-import { BrowserRouter as Router } from'react-router-dom';
-import styled, { ThemeProvider } from 'styled-components'
-import MainHeader from '../containers/header/mainHeader'
-import MainContent from '../containers/contents/mainContent'
+import { BrowserRouter as Router } from 'react-router-dom';
+import styled, { ThemeProvider } from 'styled-components';
+import MainHeader from '../containers/header/mainHeader';
+import MainContent from '../containers/contents/mainContent';
 //import StyledMainFooter from '../containers/footer/mainFooter'
 
-import GlobalStyle from '../styles/globalStyling'
+import GlobalStyle from '../styles/globalStyling';
 
 const AppBackground = styled.div`
     width: 100%;
     height: 100%;
-    background: radial-gradient(ellipse at bottom,#1b2735 70%,#090a0f 100%);
+    background: radial-gradient(ellipse at bottom, #1b2735 70%, #090a0f 100%);
     position: fixed;
     top: 0px;
     left: 0px;
@@ -25,18 +25,16 @@ const ThemeWrapper = styled.div`
     min-height: 100%;
     margin: auto;
     font-size: 20px;
-    @media screen and (max-width: 600px){
+    @media screen and (max-width: 600px) {
         width: 100%;
         font-size: 15px;
     }
 `;
 
-const MainApp = styled.div`
-    
-`;
+const MainApp = styled.div``;
 
 const Main = props => {
-    return(
+    return (
         <Router>
             <GlobalStyle />
             <ThemeProvider theme={props.theme}>
@@ -50,14 +48,13 @@ const Main = props => {
                 </ThemeWrapper>
             </ThemeProvider>
         </Router>
-    )
-}
+    );
+};
 
 let mapStateToProps = ({ themeReducer }) => {
-    return{
-        theme : themeReducer.theme
-    }
-}
+    return {
+        theme: themeReducer.theme,
+    };
+};
 
 export default connect(mapStateToProps, null)(Main);
-

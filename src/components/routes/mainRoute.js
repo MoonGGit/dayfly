@@ -10,27 +10,20 @@ const StyledCustomRoute = styled(CustomRoute)`
         text-align: left;
         margin-left: 2%;
     }
-    
 `;
 
-function createRoutes(routes){
+function createRoutes(routes) {
     return routes.map((route, i) => {
-        return route.routes? createRoutes(route.routes) : (
-                <StyledCustomRoute key={i} {...route} />
-        )
-    })
+        return route.routes ? createRoutes(route.routes) : <StyledCustomRoute key={i} {...route} />;
+    });
 }
 
-const MainRouteDiv = styled.div`
-    
-`;
+const MainRouteDiv = styled.div``;
 
 export default () => {
-    return(
+    return (
         <MainRouteDiv>
-            <Switch>
-                {createRoutes(routes)}
-            </Switch>
+            <Switch>{createRoutes(routes)}</Switch>
         </MainRouteDiv>
-    )
-}
+    );
+};
