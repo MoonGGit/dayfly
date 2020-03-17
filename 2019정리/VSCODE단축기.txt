@@ -1,7 +1,7 @@
 CTRL K O : 폴더 열기
 CTRL O : 파일 열기
 CTRL B : 사이드바 토글
-SHIFT ALT F : 문서 자동 정렬
+SHIFT ALT F : 문서 자동 정렬    // ??안씀 
 SHIFT ALT A : 블럭 주석
 CTRL SHIFT [ : 코드 접기
 CTRL SHIFT ] : 코드 펼치기

@@ -2,10 +2,9 @@
   display: "flex"   // nav만들 때 ul
   flex: 1           // li 
   
-
-
-
-
+😆셀렉터
+:disabled
+:enabled
 
  <link rel="stylesheet" type="text/css" href="sample />
 ★★★css적용 우선순위(캐스캐이딩 : 속성설정이 선택되는 순서)

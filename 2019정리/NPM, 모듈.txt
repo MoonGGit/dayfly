@@ -123,6 +123,31 @@ alert('foo');
 2.package.json에 적용
 3.뭐가 먹히고 안먹히고 몰라서 일단 패스..
 
+😆babel-plugin-named-asset-import
+img 태그를 사용하지 않고, svg 를 jsx 형태로 바로 렌더링하게 해 줌, 타입스크립트로 사용하자
+1. >npm --save-dev babel-plugin-named-asset-import
+2. 웹팩설정
+※참고: https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/config/webpack.config.js#L411-L423
+3. src/typing.d.ts수정
+    declare module '*.mdx';
 
+    declare module '*.svg' {
+      import * as React from 'react';
 
+      export const ReactComponent: React.FunctionComponent<React.SVGProps<
+        SVGSVGElement
+      >>;
 
+      const src: string;
+      export default src;
+    }
+4. svg가 들어있는 폴더에서 index.ts생성 후, 아래 처럼 작성
+    export { ReactComponent as exit } from './exit.svg';
+    export { ReactComponent as heart } from './heart.svg';
+    ...
+5. 아이콘 컴포넌트를 만들자
+    import * as icons from './svg';
+    type IconType = keyof typeof icons;   // "exit" | "heart" | ... 로 나옴
+    export const iconTypes: IconType[] = Object.keys(icons) as any[];   // 스토리에서 배열로 불러오기 위함
+    ...타입하고 컴포넌트 구현
+※참고: https://velog.io/@velopert/create-your-own-design-system-with-storybook#4-3-icon-%EB%A7%8C%EB%93%A4%EA%B8%B0

@@ -4,3 +4,8 @@ interpolate : 덧붙이다
 escape hatch : 비상구
 as long as : ~ 하는 한
 arbitrary : 임의적인
+predictable : 예측 할 수 있는
+declarative way : 선언 방법
+hassle : 귀찮은, 번거로운
+template = boilerplate
+plumbing boilerplate : 템플릿에 맞추는 것
